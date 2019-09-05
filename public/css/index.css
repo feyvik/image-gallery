@@ -80,3 +80,13 @@ li{
   width:100%;
   height:5vh;
 }
+.loader{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+#loader{
+  width: 5%;
+}

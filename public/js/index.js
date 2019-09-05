@@ -1,4 +1,4 @@
-let start = 0, end = 10, arrayOfObjects = [];
+let start = 0, end = 10, buffer = [];
 
 // nav
 window.addEventListener("scroll", function () {
@@ -32,8 +32,8 @@ window.onload = () => {
       return response.json();
     })
     .then(arrayOfObjects => {
-      
-      displayImages(arrayOfObjects, start, end);
+      buffer.push(...arrayOfObjects);
+      displayImages(buffer, start, end);
       //  image.push(...myJson);
       //  loadImage()
     })
@@ -49,9 +49,10 @@ window.onload = () => {
 };
 
 // displayImages();
-function displayImages(arrayOfObjects, start, end) {
-  if (start == 30) return;
-  let shortArray = arrayOfObjects.splice(start, end);
+function displayImages(buffer, start, end) {
+  if (buffer.length == 0) return;
+  let shortArray = buffer.splice(start, end);
+
   shortArray.map(obj => {
     let { author, download_url, id } = obj;
     document.getElementById('display').innerHTML += `
@@ -60,10 +61,8 @@ function displayImages(arrayOfObjects, start, end) {
             <p class="text-red author">${author}</p>
           </div>
         `;
-
-    start = start + 10;
-    end = end + 10;
-  })
+      })
+  // document.querySelector('.loader').style.display = 'block'
   // Sets an observer for each image
   lazyTargets = document.querySelectorAll('.lazy-loading');
   lazyTargets.forEach(lazyLoad);
@@ -85,3 +84,13 @@ function lazyLoad(target) {
   });
   obs.observe(target);
 }
+// infinit scroller
+window.addEventListener("scroll", function () {
+  document.querySelector('.loader').style.display = 'none';
+  if (Number(document.documentElement.scrollTop) + Number(document.documentElement.clientHeight) - Number(document.body.clientHeight) >= 0) {
+    document.querySelector('.loader').style.display = 'block';
+    displayImages(buffer, start, end);
+    document.querySelector('.loader').style.display = 'none';
+    // this.console.log(displayImages(arrayOfObjects, start, end))
+  }
+});
