@@ -111,6 +111,10 @@ footer{
   align-items: center;
   width: 100%;
 }
+footer i{
+  border: 1px solid;
+  border-radius: 20px;
+}
 /* media */
 @media screen and (max-width: 991px){
   .upper {
