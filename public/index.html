@@ -11,19 +11,19 @@
   <meta name="title" content="FreepiK" />
   <meta name="description" content="FreepiK is an image gallery" />
   <meta name="url" content="http://127.0.0.1:5500/" />
-  <meta name="image" content="http://127.0.0.1:5500/../public/images/vector.png" />
+  <meta name="image" content="http://127.0.0.1:5500/../public/images/0-5616x3744.jpg" />
 
   <!-- open graph tags -->
   <meta property="og:title" content="FreepiK" />
-  <meta property="og:description" content="FreepiK is an image gallery" />
+  <meta property="og:description" content="FreepiK allows you to search and download creative, smart and high-resolution images for your websites" />
   <meta property="og:url" content="http://127.0.0.1:5500/public/index.html" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://127.0.0.1:5500/../public/images/vector.png" />
+  <meta property="og:image" content="http://127.0.0.1:5500/../public/images/0-5616x3744.jpg" />
 
   <!-- twitter card -->
   <meta name="twitter:title" content="FreepiK"/>
-  <meta name="twitter:description" content="FreepiK is an image gallery" />
-  <meta name="twitter:image" content="http://127.0.0.1:5500/../public/images/vector.png" />
+  <meta name="twitter:description" content="FreepiK allows you to search and download creative, smart and high-resolution images for your websites" />
+  <meta name="twitter:image" content="http://127.0.0.1:5500/../public/images/0-5616x3744.jpg" />
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:site" content="@FreepiK" />
   
@@ -38,35 +38,34 @@
 <body>
   <div class="container-fluid landing">
     <nav class="fixed-top nav-up">
-      <a class="navbar-brand" href="#"><img src="images/vector.png" width="10%" alt="">FreepiK</a>
+      <a class="navbar-brand" href="#"><img src="images/vector.png" class="logo" width="15%" alt="">FreepiK</a>
       <div class="input-container">
-        <input class="input-field" type="text" placeholder="Email" name="email">
+        <input class="input-field" type="search" placeholder="search" name="search">
       </div>
     </nav>
 
     <div class="container land">
-        <div class="land-text animated fadeInLeft" style="animation-delay: 1.2s; font-weight: bold">
-          <div class="upper">
-            <h1 class="mt-2 mb-4">FreepiK</h1>
-            <p>
-              <b>FreepiK </b>allows you to search and download creative, smart and high-resolution images for your websites
-            </p>
-            <input type="search" class="form-control mt-2 mb-3" placeholder="search">
-          </div>        
-        </div>
-    </div>
+      <div class="land-text animated fadeInLeft " style="animation-delay: 1.2s; font-weight: bold">
+        <div class="upper">
+          <h1 class="mt-2 mb-4">FreepiK</h1>
+        <p>
+          FreepiK allows you to search and download creative, smart and high-resolution images for your websites
+        </p>
+          <input type="search" class="form-control" placeholder="search">  
+        </div>                       
+      </div>    
+    </div>        
   </div>
   <!-- images -->
-  <div class="container-fluid">
-    <div class="container text-center">
-      <div class="row ml-1 mr-1 mt-3 mb-3 text-justify" id="display">
+    <div class="text-center image mt-3 mb-3">
+      <div class="row" id="display">
 
       </div>
       <div class="loader">
         <img src="../public/images/Double Ring-1s-200px.gif" id="loader" alt="">
       </div>
+      <p class="more">No more image to load...</p>
     </div>
-  </div>
 
   <hr>
   <footer class="text-center">
