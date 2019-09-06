@@ -26,7 +26,7 @@ window.addEventListener("scroll", function () {
 
 // calling the api
 window.onload = () => {
-  document.querySelector('.loader').style.display = 'block'
+  document.querySelector('.loader').style.display = 'block';
   // the formal url https://picsum.photos/v2/list?limit=30
   fetch('https://api.unsplash.com/photos/?client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f')
   .then(response => {
@@ -35,24 +35,25 @@ window.onload = () => {
   .then(arrayOfObjects => {
     buffer.push(...arrayOfObjects);
     displayImages(buffer, start, end);
-    document.querySelector('.loader').style.display = 'none'
     console.log(arrayOfObjects)
   })
   .catch(err => {
-    console.log(err);
+    document.querySelector('.loader').style.display = 'block';
+    console.log(err)
   });
 };
 
 // displayImages();
 function displayImages(buffer, start, end) {
-  if (buffer.length == 0){
-    return document.querySelector('.more').style.display = 'block';
-  } 
+  if (buffer.length === 0) {
+    document.querySelector('.more').style.display = 'block';
+    document.querySelector('.loader').style.display = 'none';
+ }
   let shortArray = buffer.splice(start, end);
   shortArray.map(obj => {
     let {urls, id, } = obj;
     document.getElementById('display').innerHTML += `
-          <div id="${id}" class="col-lg-3 col-md-4 col-sm-12 display">
+          <div id="${id}" class="col-lg-3 col-md-5 col-sm-12 ml-4 mr-5 mt-3 display">
             <img src="${urls.thumb}" alt="" data-lazy="" class="lazy-loading">
           </div>
         `;
@@ -80,9 +81,11 @@ function lazyLoad(target) {
 
 // infinit scroller
 window.addEventListener("scroll", function () {
-  if (Number(document.documentElement.scrollTop) + Number(document.documentElement.clientHeight) - Number(document.body.clientHeight) >= 0) {
+  if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight)
+        {
+      document.querySelector('.loader').style.display = 'block'
       displayImages(buffer, start, end);
+    }else{
       document.querySelector('.loader').style.display = 'none'
-    }else {
     }
 });

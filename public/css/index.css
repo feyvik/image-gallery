@@ -39,7 +39,7 @@ li{
 /* landing page */
 .landing{
   background: linear-gradient(rgba(83, 2, 2, 0.747), rgba(83, 2, 2, 0.747)), url('../images/0-5616x3744.jpg');
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
@@ -76,9 +76,6 @@ li{
 }
 #display{
   width: 100%;
-}
-.display{
-  margin: 4%;
 }
 .display img{
   width: 50vh;
