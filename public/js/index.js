@@ -35,15 +35,15 @@ window.onload = () => {
   .then(arrayOfObjects => {
     buffer.push(...arrayOfObjects);
     displayImages(buffer, start, end);
-    let photos = arrayOfObjects;
-    photos.map(pic => {
-      let {urls, id,} = pic;
-    document.getElementById('show').innerHTML += `
-        <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display-2">
-          <img src="${urls.thumb}" width="40%">
-        </div>
-      `
-    });
+    // let photos = arrayOfObjects;
+    // photos.map(pic => {
+    //   let {urls, id,} = pic;
+    // document.getElementById('show').innerHTML += `
+    //     <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display-2">
+    //       <img src="${urls.thumb}" width="70%" height="40vh">
+    //     </div>
+    //   `
+    // });
     console.log(arrayOfObjects)
   })
   .catch(err => {
@@ -106,6 +106,6 @@ function myFunction(imgs) {
   let image_text = document.querySelector('.modal-title')
   image_text.innerHTML = imgs.alt;
   let expandImg = document.getElementById('expandedImg');
-  expandImg.src = imgs.src;
+  expandImg.data-lazy = imgs.data-lazy;
   expandImg.parentElement.style.display = "block";
 }
