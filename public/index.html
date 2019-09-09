@@ -29,12 +29,12 @@
   
   <link rel="canonical" href="https://freepik-99146.firebaseapp.com">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="./slick/slick.css">
-  <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" type="text/css" href="slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
@@ -89,7 +89,7 @@
             <div id="imgtext"></div>
             <hr>
             <div class="image container">
-              <div class="row justify-content-center one-time slider" id="show">
+              <div class="row justify-content-center" id="show">
               </div>
               <!-- <div class="row justify-content-center one-time" id="show">
               </div> -->
@@ -108,16 +108,18 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/index.js"></script>
-  <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript">
-    $(document).on('ready', function() {
-      $('.one-time').slick({
-        dots: false,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        touchMove: false
+  <script src="slick/slick.js"></script>
+  <script>
+      $(".slider-area").slick({
+          dots: false,
+          infinite: true,
+          centerMode: true,
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          speed: 500
       });
-    });
-  </script> 
+  </script>
 </body>
 </html>

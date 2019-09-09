@@ -26,7 +26,6 @@ window.addEventListener("scroll", function () {
 
 // calling the api
 window.onload = () => {
-  document.querySelector('.loader').style.display = 'block';
   // the formal url https://picsum.photos/v2/list?limit=30
   fetch('https://api.unsplash.com/photos/?client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f')
   .then(response => {
@@ -35,15 +34,15 @@ window.onload = () => {
   .then(arrayOfObjects => {
     buffer.push(...arrayOfObjects);
     displayImages(buffer, start, end);
-    // let photos = arrayOfObjects;
-    // photos.map(pic => {
-    //   let {urls, id,} = pic;
-    // document.getElementById('show').innerHTML += `
-    //     <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display-2">
-    //       <img src="${urls.thumb}" width="70%" height="40vh">
-    //     </div>
-    //   `
-    // });
+    let photos = arrayOfObjects;
+    photos.map(pic => {
+      let {urls, id,} = pic;
+    document.getElementById('show').innerHTML += `
+        <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 gallery-con slider-area slider display-2">
+          <img src="${urls.thumb}" width="70%" height="40vh">
+        </div>
+      `
+    });
     console.log(arrayOfObjects)
   })
   .catch(err => {
@@ -106,6 +105,6 @@ function myFunction(imgs) {
   let image_text = document.querySelector('.modal-title')
   image_text.innerHTML = imgs.alt;
   let expandImg = document.getElementById('expandedImg');
-  expandImg.data-lazy = imgs.data-lazy;
+  expandImg.src = imgs.src;
   expandImg.parentElement.style.display = "block";
 }
