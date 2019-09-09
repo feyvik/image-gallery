@@ -35,6 +35,14 @@ window.onload = () => {
   .then(arrayOfObjects => {
     buffer.push(...arrayOfObjects);
     displayImages(buffer, start, end);
+    let photos = arrayOfObjects;
+    photos.map(pic => {
+      let {urls, id,} = pic;
+    document.getElementById('show').innerHTML += `
+        <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display-2">
+          <img src="${urls.thumb}" width="40%">
+        </div>
+      `
     console.log(arrayOfObjects)
   })
   .catch(err => {
@@ -45,20 +53,26 @@ window.onload = () => {
 
 // displayImages();
 function displayImages(buffer, start, end) {
-  if (buffer.length === 0) {
-    document.querySelector('.more').style.display = 'block';
-    document.querySelector('.loader').style.display = 'none';
- }
-  let shortArray = buffer.splice(start, end);
-  shortArray.map(obj => {
-    let {urls, id, } = obj;
-    document.getElementById('display').innerHTML += `
-          <div id="${id}" class="col-lg-3 col-md-5 col-sm-12 ml-4 mr-5 mt-3 display">
-            <img src="${urls.thumb}" alt="" data-lazy="" class="lazy-loading">
-          </div>
-        `;
-        // <p class="text-red author">${alt_description}</p>
-  })
+  // if (buffer.length === 0) return document.querySelector('.loader').style.display = 'none';
+  if(buffer.length === 0){
+     document.querySelector('.loader').style.display = 'none';
+    //  document.querySelector('.more').style.display = 'block'
+  }else{
+    let shortArray = buffer.splice(start, end);
+    shortArray.map(obj => {
+      let {urls, id,} = obj;
+      document.getElementById('display').innerHTML += `
+            <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display">
+              <img  alt="FreepiK image" data-lazy="${urls.thumb}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
+            </div>
+          `;
+          // <p class="text-red author">${alt_description}</p>
+    })
+    
+    document.querySelector('.loader').style.display = 'block'
+    document.querySelector('.more').style.display = 'none'
+  }
+  console.log(buffer);
   // Sets an observer for each image
   lazyTargets = document.querySelectorAll('.lazy-loading');
   lazyTargets.forEach(lazyLoad);
@@ -70,7 +84,7 @@ function lazyLoad(target) {
       if (entry.isIntersecting) {
         const img = entry.target;
         const src = img.getAttribute('data-lazy');
-        img.getAttribute('src', src);
+        img.setAttribute('src', src);
         img.classList.add('fadeIn');
         observer.disconnect();
       }
@@ -81,11 +95,16 @@ function lazyLoad(target) {
 
 // infinit scroller
 window.addEventListener("scroll", function () {
-  if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight)
-        {
-      document.querySelector('.loader').style.display = 'block'
+  if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
       displayImages(buffer, start, end);
-    }else{
-      document.querySelector('.loader').style.display = 'none'
     }
 });
+
+// view image
+function myFunction(imgs) {
+  let image_text = document.querySelector('.modal-title')
+  image_text.innerHTML = imgs.alt;
+  let expandImg = document.getElementById('expandedImg');
+  expandImg.src = imgs.src;
+  expandImg.parentElement.style.display = "block";
+}

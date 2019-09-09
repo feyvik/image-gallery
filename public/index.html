@@ -29,6 +29,8 @@
   
   <link rel="canonical" href="https://freepik-99146.firebaseapp.com">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -50,14 +52,14 @@
         <p>
           FreepiK allows you to search and download creative, smart and high-resolution images for your websites
         </p>
-          <input type="search" class="form-control" placeholder="search">  
+          <input type="search" class="form-control" placeholder="search">
+          <p>Trending searches: flowerwall, paper,background, sad, love</p> 
         </div>                       
       </div>    
     </div>        
   </div>
-  <!-- images -->
     <div class="text-center image mt-3 mb-3">
-      <div class="row" id="display">
+      <div class="row justify-content-center" id="display">
       </div>
       <div class="loader">
         <img src="../public/images/Double Ring-1s-200px.gif" id="loader" alt="">
@@ -71,11 +73,51 @@
     <a class="ml-2" href="https://twitter.com/@softspotEmma"><i class="fab fa-twitter p-2"></i></a>
     <a class="ml-2" href="https://facebook.com/favour.emma.3150/"><i class="fab fa-facebook-f p-2"></i></a>
   </footer>
+  
+  <!-- modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <img id="expandedImg" style="width:100%">
+            <div id="imgtext"></div>
+            <hr>
+            <div class="image container">
+              <div class="row justify-content-center one-time slider" id="show">
+              </div>
+              <!-- <div class="row justify-content-center one-time" id="show">
+              </div> -->
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success">Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/index.js"></script>
+  <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+      $('.one-time').slick({
+        dots: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        touchMove: false
+      });
+    });
+  </script> 
 </body>
 </html>
