@@ -43,6 +43,7 @@ window.onload = () => {
           <img src="${urls.thumb}" width="40%">
         </div>
       `
+    });
     console.log(arrayOfObjects)
   })
   .catch(err => {
