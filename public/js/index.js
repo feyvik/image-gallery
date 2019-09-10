@@ -34,15 +34,7 @@ window.onload = () => {
   .then(arrayOfObjects => {
     buffer.push(...arrayOfObjects);
     displayImages(buffer, start, end);
-    let photos = arrayOfObjects;
-    photos.map(pic => {
-      let {urls, id,} = pic;
-    document.getElementById('show').innerHTML += `
-        <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 gallery-con slider-area slider display-2">
-          <img src="${urls.thumb}" width="70%" height="40vh">
-        </div>
-      `
-    });
+    // displayImages(arrayOfObjects);
     console.log(arrayOfObjects)
   })
   .catch(err => {
@@ -53,26 +45,20 @@ window.onload = () => {
 
 // displayImages();
 function displayImages(buffer, start, end) {
-  // if (buffer.length === 0) return document.querySelector('.loader').style.display = 'none';
   if(buffer.length === 0){
      document.querySelector('.loader').style.display = 'none';
     //  document.querySelector('.more').style.display = 'block'
-  }else{
+  }
     let shortArray = buffer.splice(start, end);
     shortArray.map(obj => {
       let {urls, id,} = obj;
       document.getElementById('display').innerHTML += `
             <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display">
-              <img  alt="FreepiK image" data-lazy="${urls.thumb}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
+              <img  alt="FreepiK image" src="images/Double Ring-1s-200px.gif" data-lazy="${urls.thumb}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
             </div>
           `;
           // <p class="text-red author">${alt_description}</p>
-    })
-    
-    document.querySelector('.loader').style.display = 'block'
-    document.querySelector('.more').style.display = 'none'
-  }
-  console.log(buffer);
+    });
   // Sets an observer for each image
   lazyTargets = document.querySelectorAll('.lazy-loading');
   lazyTargets.forEach(lazyLoad);
@@ -86,14 +72,14 @@ function lazyLoad(target) {
         const src = img.getAttribute('data-lazy');
         img.setAttribute('src', src);
         img.classList.add('fadeIn');
-        observer.disconnect();
+        observer.disconnect(entry.target);
       }
     });
   });
   obs.observe(target);
 }
 
-// infinit scroller
+// // infinit scroller
 window.addEventListener("scroll", function () {
   if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
       displayImages(buffer, start, end);
