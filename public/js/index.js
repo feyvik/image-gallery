@@ -1,4 +1,4 @@
-let start = 0, end = 3, buffer = [];
+let start = 0, end = 6, buffer = [];
 let key = "open";
 // nav
 window.addEventListener("scroll", function () {
@@ -26,35 +26,47 @@ window.addEventListener("scroll", function () {
 
 // calling the api
 window.onload = () => {
-  // the formal url https://picsum.photos/v2/list?limit=30
-  fetch('https://api.unsplash.com/photos/?client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f')
+  // <https://api.unsplash.com/photos?page=1>
+  fetch('https://api.unsplash.com/photos?page=5&per_page=100&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f')
   .then(response => {
     return response.json();
   })
   .then(arrayOfObjects => {
+    document.getElementById('loader').style.display = 'none';
     buffer.push(...arrayOfObjects);
     displayImages(buffer, start, end);
     // displayImages(arrayOfObjects);
-    console.log(arrayOfObjects)
   })
   .catch(err => {
-    document.querySelector('.loader').style.display = 'block';
     console.log(err)
   });
+
+  // second api
+  fetch('https://picsum.photos/v2/list?limit=30')
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data)
+    })
+    .catch(err => {
+      document.querySelector('.loader').style.display = 'block';
+      console.log(err)
+    });
 };
 
 // displayImages();
 function displayImages(buffer, start, end) {
   if(buffer.length === 0){
-     document.querySelector('.loader').style.display = 'none';
     //  document.querySelector('.more').style.display = 'block'
   }
     let shortArray = buffer.splice(start, end);
     shortArray.map(obj => {
-      let {urls, id,} = obj;
+      let {urls, id, alt_description} = obj;
       document.getElementById('display').innerHTML += `
             <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display">
-              <img  alt="FreepiK image" src="images/Double Ring-1s-200px.gif" data-lazy="${urls.thumb}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
+              <img  alt="FreepiK image" data-lazy="${urls.thumb}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
+              <p>${alt_description}</p>
             </div>
           `;
           // <p class="text-red author">${alt_description}</p>
@@ -83,6 +95,8 @@ function lazyLoad(target) {
 window.addEventListener("scroll", function () {
   if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
       displayImages(buffer, start, end);
+    }else{
+      console.log('rrrrrrrr')
     }
 });
 
@@ -94,3 +108,21 @@ function myFunction(imgs) {
   expandImg.src = imgs.src;
   expandImg.parentElement.style.display = "block";
 }
+
+// serach api
+const input = document.querySelectorAll('.search');
+function search(){
+  fetch(`https://api.unsplash.com/search/photos?page=5&per_page=100&query=${input}&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    
+    console.log(data)
+  })
+  .catch(err => {
+    document.querySelector('.loader').style.display = 'block';
+    console.log(err)
+  });
+}
+search();

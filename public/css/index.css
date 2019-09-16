@@ -26,6 +26,7 @@ nav.black{
   margin: auto;
   height: 6vh;
   display: none;
+  border: none;
 }
 a{
   color: rgb(252, 252, 252);
@@ -37,22 +38,22 @@ li{
   list-style: none;
 }
 /* landing page */
-.landing{
-  background: linear-gradient(rgba(63, 81, 181, 0.747), rgba(63, 81, 181, 0.747)), url('../images/0-5616x3744\ .jpg');
+.hero{
+  background: linear-gradient(rgba(63, 81, 181, 0.747), rgba(63, 81, 181, 0.747)), url('../images/vick.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   height: 99vh;
 }
-.land{
+.hero-child{
   box-sizing: border-box;
   padding-top: 12%;
   color: #ffffff;
   height: 80vh;
   width: 100%;
 }
-.land-text{
+.hero-child-text{
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -76,14 +77,13 @@ li{
 }
 #display{
   width: 100%;
-}
-.display{
-  margin-bottom: 2%;
+  min-height: 80vh;
 }
 .display img{
-  width: 50vh;
+  width: 55vh;
   height: 50vh;
   object-fit: cover;
+  background: rgb(63, 81, 181);
 }
 .display p{
   width:100%;
@@ -94,13 +94,9 @@ li{
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
 }
 #loader{
   width: 5%;
-}
-.more{
-  display: none;
 }
 /* view */
 .gallery-info{
@@ -137,7 +133,7 @@ li{
   object-fit: cover;
 }
 footer{
-  background: rgb(63, 81, 181);
+  background: #3f51b5;
   height: 10vh;
   color: #ffffff;
   display: flex;
