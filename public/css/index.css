@@ -1,31 +1,36 @@
 body{
   margin: 0;
   padding: 0;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 nav{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
+  padding: 0px;
+  margin: 0;
+  height: 10vh;
 }
 nav.black{
   background: rgb(63, 81, 181);
 }
-.nav-up {
-  height: 10vh;
-}
 .input-container {
-  width: 80%;
+  width: 100%;
+  display: none;
+}
+button{
+  border-radius: 4px;
+  padding: 7px 10px;
+  box-shadow: 8px 8px 4px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);  
+  background: rgba(63, 81, 181);
+  border: none;
+  color: #ffffff;
 }
 .input-field {
   width: 70%;
   padding: 10px;
-  box-shadow: none;
+  outline: none;
   border-radius: 4px;
   margin: auto;
   height: 6vh;
-  display: none;
   border: none;
 }
 a{
@@ -39,7 +44,7 @@ li{
 }
 /* landing page */
 .hero{
-  background: linear-gradient(rgba(63, 81, 181, 0.747), rgba(63, 81, 181, 0.747)), url('../images/vick.jpg');
+  background:linear-gradient(rgba(63, 81, 181, 0.747), rgba(63, 81, 181, 0.747)), url('../images/vick.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -60,34 +65,19 @@ li{
   width: 100%;
   height: 70vh;
 }
-.land-text input{
-  box-shadow: none !important;
-}
 .land-text p{
   font-size: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 .upper {
   height: 70%;
   width: 60%;
 }
-
-/* display images */
-.image{
-  width: 100%;
-}
-#display{
-  width: 100%;
-  min-height: 80vh;
-}
+/* show */
 .display img{
-  width: 55vh;
-  height: 50vh;
-  object-fit: cover;
-  background: rgb(63, 81, 181);
-}
-.display p{
-  width:100%;
-  height:5vh;
+  width: 100%;
+  height: 60vh;
+  background: #3f51b5;
 }
 .loader{
   width: 100%;
@@ -123,18 +113,9 @@ li{
   font-size: 35px;
   cursor: pointer;
 }
-#show{
-  width: 100%;
-}
-.display-2{
-  margin-bottom: 2%;
-}
-.display-2 img{
-  object-fit: cover;
-}
 footer{
   background: #3f51b5;
-  height: 10vh;
+  min-height: 15vh;
   color: #ffffff;
   display: flex;
   justify-content: center;
@@ -154,7 +135,7 @@ footer i{
 }
 @media screen and (max-width: 800px){
   .logo{
-    width: 15%;
+    width: 40%;
   }
   .input-container {
     width: 100%;
@@ -172,9 +153,6 @@ footer i{
   }
 }
 @media screen and (max-width: 600px){
-  .nav-up {
-    height: 17vh;
-  }
   nav{
     display: block;
     height: 17vh;

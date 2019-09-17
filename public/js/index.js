@@ -15,12 +15,12 @@ const getHeight = element => {
   offset.splice(offset.length - 2, 2);
   return Number(offset.join(''));
 }
-let offset = `${getHeight(document.querySelector(".upper")) + getHeight(document.querySelector(".nav-up"))}`;
+let offset = `${getHeight(document.querySelector(".upper")) + getHeight(document.querySelector("nav"))}`;
 window.addEventListener("scroll", function () {
   if (document.body.scrollTop > offset || document.documentElement.scrollTop > offset) {
-    document.querySelector('.input-field').style.display = 'block';
+    document.querySelector('.input-container').style.display = 'block';
   } else {
-    document.querySelector(".input-field").style.display = 'none';
+    document.querySelector(".input-container").style.display = 'none';
   }
 });
 
@@ -42,17 +42,17 @@ window.onload = () => {
   });
 
   // second api
-  fetch('https://picsum.photos/v2/list?limit=30')
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      console.log(data)
-    })
-    .catch(err => {
-      document.querySelector('.loader').style.display = 'block';
-      console.log(err)
-    });
+  // fetch('https://picsum.photos/v2/list?limit=30')
+  //   .then(response => {
+  //     return response.json();
+  //   })
+  //   .then(data => {
+  //     console.log(data)
+  //   })
+  //   .catch(err => {
+  //     document.querySelector('.loader').style.display = 'block';
+  //     console.log(err)
+  //   });
 };
 
 // displayImages();
@@ -110,19 +110,44 @@ function myFunction(imgs) {
 }
 
 // serach api
-const input = document.querySelectorAll('.search');
-function search(){
-  fetch(`https://api.unsplash.com/search/photos?page=5&per_page=100&query=${input}&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
-  .then(response => {
-    return response.json();
-  })
-  .then(data => {
+// function search(){
+//   fetch(`https://api.unsplash.com/photos?page=5&per_page=100&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
+//   .then(response => {
+//     return response.json();
+//   })
+//   .then((data) => {
+//       let card = data;
+//       card.forEach(obj => {
+//       let {urls, id,} = obj;
+//       document.getElementById('slide').innerHTML += `
+//       <div class="gallery col-lg-3" id="${id}">
+//         <img src="${urls.thumb}" alt="">      
+//       </div>
+//       `
+//       })
+//     console.log(data)
+//   })
+//   .catch(err => {
+//     document.querySelector('.loader').style.display = 'block';
+//     console.log(err)
+//   });
+// }
+// search();
+
+// serach api
+// const input = document.querySelectorAll('.search');
+// function search(){
+//   fetch(`https://api.unsplash.com/search/photos?page=5&per_page=100&query=${input}&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
+//   .then(response => {
+//     return response.json();
+//   })
+//   .then(data => {
     
-    console.log(data)
-  })
-  .catch(err => {
-    document.querySelector('.loader').style.display = 'block';
-    console.log(err)
-  });
-}
-search();
+//     console.log(data)
+//   })
+//   .catch(err => {
+//     document.querySelector('.loader').style.display = 'block';
+//     console.log(err)
+//   });
+// }
+// search();

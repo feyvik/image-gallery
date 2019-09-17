@@ -15,10 +15,12 @@
 
   <!-- open graph tags -->
   <meta property="og:title" content="FreepiK" />
-  <meta property="og:description" content="FreepiK allows you to search and download creative, smart and high-resolution images for your websites" />
+  <meta property="og:description" content="Freepik allows you to search and download creative, smart and high-resolution images for your websites" />
   <meta property="og:url" content="https://freepik-99146.firebaseapp.com/public/index.html" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://freepik-99146.firebaseapp.com/images/vick.jpg" />
+  <meta property="og:image:width" content="300" />
+  <meta property="og:image:height" content="400" />
 
   <!-- twitter card -->
   <meta name="twitter:title" content="FreepiK"/>
@@ -30,8 +32,7 @@
   <link rel="canonical" href="https://freepik-99146.firebaseapp.com">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Cuprum|IBM+Plex+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" type="text/css" href="slick/slick.css">
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
@@ -39,10 +40,13 @@
 </head>
 <body>
   <!-- nav -->
-  <nav class="fixed-top nav-up">
-    <a class="navbar-brand" href="#"><img src="images/vector.png" class="logo" width="15%" alt="">FreepiK</a>
-    <div class="input-container">
-      <input class="input-field" type="search" placeholder="search" name="search" class="search">
+  <nav class="fixed-top nav-up row mx-0 align-items-center">
+    <a class="col-3 nabar-brand" href="index.html"><img src="images/vector.png" class="logo" width="80%" height="60vh" alt=""></a>
+    <div class="input-container col-9">
+      <form action="">
+        <input class="input-field " type="search" placeholder="search" name="search" class="search">
+        <button type="submit" class="button">Search</button>
+      </form>
     </div>
   </nav>
   <!-- hero -->
@@ -54,12 +58,16 @@
         <p>
           FreepiK allows you to search and download creative, smart and high-resolution images for your websites
         </p>
-          <input type="search" class="form-control" placeholder="search" class="search">
-          <p>Trending searches: flowerwall, paper, background, sad, love</p> 
+        <form action="">
+          <input class="input-field " type="search" placeholder="search" name="search" class="search">
+          <button type="submit" class="button">Search</button>
+        </form>
+        <p>Trending searches: flowerwall, paper, background, sad, love</p> 
         </div>                       
       </div>    
     </div>        
-  </div>
+  </div> 
+
   
   <div class="image mt-3 mb-3 container-fluid text-center">
     <div class="row justify-content-around" id="display">
@@ -71,6 +79,7 @@
   </div>
 
   <hr>
+
   <footer class="text-center">
     <a>&copy coded by Favour Emma</a>
     <a class="ml-2" href="https://twitter.com/@softspotEmma"><i class="fab fa-twitter p-2"></i></a>
@@ -90,44 +99,10 @@
         <div class="modal-body">
           <img id="expandedImg" style="width:100%; height:70vh; object-fit: cover;">
         </div>
-        <section class="col-12 gallery-con slider-area mb-5 py-3 slider">
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
-            <div class="gallery">
-                <img src="" alt="">
-            </div>
+        <section class="container">
+          <div class=" row gallery-con slider-area slider" id="slide">
 
+          </div>
         </section>
         <div class="modal-footer">
           <button type="button" class="btn btn-success">Download</button>
@@ -139,8 +114,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.min.js"></script>
   <script src="js/index.js"></script>
   <script src="slick/slick.js"></script>
   <script>
