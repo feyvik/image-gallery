@@ -27,9 +27,9 @@ window.addEventListener("scroll", function () {
 // calling the api
 let url = 'https://api.unsplash.com/photos?';
 let key = 'client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f'
-let page = 1;
-function loadImage(page){
-  fetch(`${url}&per_page=500&${key}&page=` + page,)
+
+function loadImage(){
+  fetch(`${url}page=1&per_page=500&${key}`)
   .then(response => {
     return response.json();
   })
