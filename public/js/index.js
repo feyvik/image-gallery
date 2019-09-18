@@ -25,11 +25,8 @@ window.addEventListener("scroll", function () {
 });
 
 // calling the api
-let url = 'https://api.unsplash.com/photos?';
-let key = 'client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f'
-
 function loadImage(){
-  fetch(`${url}page=1&per_page=500&${key}`)
+  fetch(`https://api.unsplash.com/photos?page=1&per_page=500&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
   .then(response => {
     return response.json();
   })
@@ -83,11 +80,11 @@ function myFunction(imgs) {
 }
 
 //infinit scroller
-window.addEventListener("scroll", function () {
-  if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
-      loadImage()
-    }else{
-      console.log('rrrrrrrr')
-    }
-});
-
+// window.addEventListener("scroll", function () {
+//   if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
+//       loadImage()
+//     }else{
+//       console.log('rrrrrrrr')
+//     }
+// });
+loadImage()
