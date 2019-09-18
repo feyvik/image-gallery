@@ -32,6 +32,7 @@
   <link rel="canonical" href="https://freepik-99146.firebaseapp.com">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <link href="https://fonts.googleapis.com/css?family=Cuprum|IBM+Plex+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" type="text/css" href="slick/slick.css">
@@ -50,6 +51,7 @@
     </div>
   </nav>
   <!-- hero -->
+
   <div class="container-fluid hero">
     <div class="container hero-child">
       <div class="hero-child-text animated fadeInLeft " style="animation-delay: 1.2s; font-weight: bold">
@@ -68,8 +70,7 @@
     </div>        
   </div> 
 
-  
-  <div class="image mt-3 mb-3 container-fluid text-center">
+  <div class="image mt-3 mb-3 container-fluid text-center" id="scroll"></div>
     <div class="row justify-content-around" id="display">
       
     </div>
@@ -117,16 +118,16 @@
   <script src="js/index.js"></script>
   <script src="slick/slick.js"></script>
   <script>
-      $(".slider-area").slick({
-          dots: false,
-          infinite: true,
-          centerMode: true,
-          slidesToShow: 6,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 2000,
-          speed: 500
-      });
+    $(".slider-area").slick({
+      dots: false,
+      infinite: true,
+      centerMode: true,
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      speed: 500
+    });
   </script>
 </body>
 </html>

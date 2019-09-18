@@ -1,5 +1,6 @@
-let start = 0, end = 6, buffer = [];
-let key = "open";
+const load = [];
+let start = 0;
+
 // nav
 window.addEventListener("scroll", function () {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
@@ -25,57 +26,38 @@ window.addEventListener("scroll", function () {
 });
 
 // calling the api
-window.onload = () => {
-  // <https://api.unsplash.com/photos?page=1>
-  fetch('https://api.unsplash.com/photos?page=5&per_page=100&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f')
+function loadImage(){
+  fetch(`https://api.unsplash.com/photos?per_page=200&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
   .then(response => {
     return response.json();
   })
   .then(arrayOfObjects => {
-    document.getElementById('loader').style.display = 'none';
-    buffer.push(...arrayOfObjects);
-    displayImages(buffer, start, end);
-    // displayImages(arrayOfObjects);
+    if (!arrayOfObjects.length) {
+      document.getElementById('loader').style.display = 'block';
+      return;
+    }
+    arrayOfObjects.forEach(obj => {
+      let {urls, id, alt_description} = obj;
+      document.getElementById('display').innerHTML += `
+        <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display">
+          <img  alt="FreepiK image" data-lazy="${urls.thumb}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
+          <p>${alt_description}</p>
+        </div>
+      `;
+      // Sets an observer for each image
+      lazyTargets = document.querySelectorAll('.lazy-loading');
+      lazyTargets.forEach(lazyLoad);
+    });
+    load.push(arrayOfObjects);
+    console.log(arrayOfObjects);
   })
   .catch(err => {
     console.log(err)
   });
-
-  // second api
-  // fetch('https://picsum.photos/v2/list?limit=30')
-  //   .then(response => {
-  //     return response.json();
-  //   })
-  //   .then(data => {
-  //     console.log(data)
-  //   })
-  //   .catch(err => {
-  //     document.querySelector('.loader').style.display = 'block';
-  //     console.log(err)
-  //   });
 };
+loadImage()
 
-// displayImages();
-function displayImages(buffer, start, end) {
-  if(buffer.length === 0){
-    //  document.querySelector('.more').style.display = 'block'
-  }
-    let shortArray = buffer.splice(start, end);
-    shortArray.map(obj => {
-      let {urls, id, alt_description} = obj;
-      document.getElementById('display').innerHTML += `
-            <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display">
-              <img  alt="FreepiK image" data-lazy="${urls.thumb}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
-              <p>${alt_description}</p>
-            </div>
-          `;
-          // <p class="text-red author">${alt_description}</p>
-    });
-  // Sets an observer for each image
-  lazyTargets = document.querySelectorAll('.lazy-loading');
-  lazyTargets.forEach(lazyLoad);
-}
-
+// lazyLoad
 function lazyLoad(target) {
   const obs = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -91,15 +73,6 @@ function lazyLoad(target) {
   obs.observe(target);
 }
 
-// // infinit scroller
-window.addEventListener("scroll", function () {
-  if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
-      displayImages(buffer, start, end);
-    }else{
-      console.log('rrrrrrrr')
-    }
-});
-
 // view image
 function myFunction(imgs) {
   let image_text = document.querySelector('.modal-title')
@@ -108,6 +81,20 @@ function myFunction(imgs) {
   expandImg.src = imgs.src;
   expandImg.parentElement.style.display = "block";
 }
+
+function start(){
+  start.push
+
+}
+//infinit scroller
+// window.addEventListener("scroll", function () {
+//   if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
+//       loadImage()
+//     }else{
+//       console.log('rrrrrrrr')
+//     }
+// });
+
 
 // serach api
 // function search(){
