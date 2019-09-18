@@ -1,4 +1,3 @@
-const load = [];
 let start = 0;
 
 // nav
@@ -26,8 +25,11 @@ window.addEventListener("scroll", function () {
 });
 
 // calling the api
-function loadImage(){
-  fetch(`https://api.unsplash.com/photos?per_page=200&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
+let url = 'https://api.unsplash.com/photos?';
+let key = 'client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f'
+let page = 1;
+function loadImage(page){
+  fetch(`${url}&per_page=500&${key}&page=` + page,)
   .then(response => {
     return response.json();
   })
@@ -48,14 +50,12 @@ function loadImage(){
       lazyTargets = document.querySelectorAll('.lazy-loading');
       lazyTargets.forEach(lazyLoad);
     });
-    load.push(arrayOfObjects);
     console.log(arrayOfObjects);
   })
   .catch(err => {
     console.log(err)
   });
 };
-loadImage()
 
 // lazyLoad
 function lazyLoad(target) {
@@ -82,59 +82,12 @@ function myFunction(imgs) {
   expandImg.parentElement.style.display = "block";
 }
 
-function start(){
-  start.push
-
-}
 //infinit scroller
-// window.addEventListener("scroll", function () {
-//   if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
-//       loadImage()
-//     }else{
-//       console.log('rrrrrrrr')
-//     }
-// });
+window.addEventListener("scroll", function () {
+  if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
+      loadImage()
+    }else{
+      console.log('rrrrrrrr')
+    }
+});
 
-
-// serach api
-// function search(){
-//   fetch(`https://api.unsplash.com/photos?page=5&per_page=100&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
-//   .then(response => {
-//     return response.json();
-//   })
-//   .then((data) => {
-//       let card = data;
-//       card.forEach(obj => {
-//       let {urls, id,} = obj;
-//       document.getElementById('slide').innerHTML += `
-//       <div class="gallery col-lg-3" id="${id}">
-//         <img src="${urls.thumb}" alt="">      
-//       </div>
-//       `
-//       })
-//     console.log(data)
-//   })
-//   .catch(err => {
-//     document.querySelector('.loader').style.display = 'block';
-//     console.log(err)
-//   });
-// }
-// search();
-
-// serach api
-// const input = document.querySelectorAll('.search');
-// function search(){
-//   fetch(`https://api.unsplash.com/search/photos?page=5&per_page=100&query=${input}&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
-//   .then(response => {
-//     return response.json();
-//   })
-//   .then(data => {
-    
-//     console.log(data)
-//   })
-//   .catch(err => {
-//     document.querySelector('.loader').style.display = 'block';
-//     console.log(err)
-//   });
-// }
-// search();
