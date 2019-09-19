@@ -97,7 +97,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body gallery-con one-time slider">
           <img id="expandedImg" style="width:100%; height:70vh; object-fit: cover;">
         </div>
         <section class="container">
@@ -129,6 +129,13 @@
   <script src="js/index.js"></script>
   <script src="slick/slick.js"></script>
   <script>
+    $('.one-time').slick({
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      adaptiveHeight: true
+    });
     $(".slider-area").slick({
       dots: false,
       infinite: true,
