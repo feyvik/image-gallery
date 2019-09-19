@@ -26,21 +26,16 @@ window.addEventListener("scroll", function () {
 
 // calling the api
 function loadImage(){
-  fetch(`https://api.unsplash.com/photos?page=1&per_page=500&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
+  fetch('https://api.unsplash.com/photos/?page=1&per_page=500&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f')
   .then(response => {
     return response.json();
   })
   .then(arrayOfObjects => {
-    if (!arrayOfObjects.length) {
-      document.getElementById('loader').style.display = 'block';
-      return;
-    }
     arrayOfObjects.forEach(obj => {
-      let {urls, id, alt_description} = obj;
+      let {urls, id, alt_description, color} = obj;
       document.getElementById('display').innerHTML += `
-        <div id="${id}" class="col-lg-4 col-md-5 col-sm-12 display">
-          <img  alt="FreepiK image" data-lazy="${urls.thumb}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
-          <p>${alt_description}</p>
+        <div id="${id}" class="col-lg-4 col-md-6 col-sm-12 display">
+          <img  alt="${alt_description}" data-lazy="${urls.thumb}" style="background-color:${color}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
         </div>
       `;
       // Sets an observer for each image
@@ -53,7 +48,7 @@ function loadImage(){
     console.log(err)
   });
 };
-
+loadImage();
 // lazyLoad
 function lazyLoad(target) {
   const obs = new IntersectionObserver((entries, observer) => {
@@ -80,11 +75,11 @@ function myFunction(imgs) {
 }
 
 //infinit scroller
-// window.addEventListener("scroll", function () {
-//   if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight) {
-//       loadImage()
-//     }else{
-//       console.log('rrrrrrrr')
-//     }
-// });
-loadImage()
+window.addEventListener("scroll", function () {
+  if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight){
+     
+    }else{
+      console.log('rrrrrrrr')
+    }
+});
+// loadImage()

@@ -10,7 +10,9 @@ nav{
   height: 10vh;
 }
 nav.black{
-  background: rgb(63, 81, 181);
+  background: rgb(255, 255, 255);
+  animation-delay: 2s;
+  animation-direction: 1s;
 }
 .input-container {
   width: 100%;
@@ -31,7 +33,11 @@ button{
   border-radius: 4px;
   margin: auto;
   height: 6vh;
-  border: none;
+  border: 1px solid rgba(63, 81, 181);
+}
+.input-field:focus {
+  color: rgba(63, 81, 181);
+  border: 1px solid rgb(110, 2, 2);
 }
 a{
   color: rgb(252, 252, 252);
@@ -44,12 +50,13 @@ li{
 }
 /* landing page */
 .hero{
-  background:linear-gradient(rgba(63, 81, 181, 0.747), rgba(63, 81, 181, 0.747)), url('../images/vick.jpg');
+  background:linear-gradient(rgba(0, 0, 0, 0.747), rgba(0, 0, 0, 0.747)), url('../images/vick.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   height: 99vh;
+  background-attachment: fixed;
 }
 .hero-child{
   box-sizing: border-box;
@@ -75,12 +82,17 @@ li{
 }
 /* show */
 #display{
-  width: 100%;
+  width: 98%;
+  margin: auto;
+}
+#display div{
+  margin-bottom: 4px;
 }
 .display img{
   width: 100%;
-  height: 60vh;
+  height: 40vh;
   background: #3f51b5;
+  object-fit: fill;
 }
 .loader{
   width: 100%;
@@ -91,31 +103,7 @@ li{
 #loader{
   width: 5%;
 }
-/* view */
-.gallery-info{
-  position: absolute;
-  height: 30vh;
-  width: 60%;
-  left: 25%;
-  z-index: 10;
-}
-/* Expanding image text */
-#imgtext {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  color: white;
-  font-size: 20px;
-}
-/* Closable button inside the expanded image */
-.closebtn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  color: white;
-  font-size: 35px;
-  cursor: pointer;
-}
+/* footer */
 footer{
   background: #3f51b5;
   min-height: 15vh;
