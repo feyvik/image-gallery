@@ -35,7 +35,7 @@ function loadImage(){
       let {urls, id, alt_description, color} = obj;
       document.getElementById('display').innerHTML += `
         <div id="${id}" class="col-lg-4 col-md-6 col-sm-12 display">
-          <img  alt="${alt_description}" data-lazy="${urls.thumb}" style="background-color:${color}" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
+          <img  alt="${alt_description}" data-lazy="${urls.thumb}" style="background-color:${color}; font-size:12px;" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
         </div>
       `;
       // Sets an observer for each image
