@@ -34,8 +34,8 @@ function loadImage(){
     arrayOfObjects.forEach(obj => {
       let {urls, id, alt_description, color} = obj;
       document.getElementById('display').innerHTML += `
-        <div id="${id}" class="col-lg-4 col-md-6 col-sm-12 display">
-          <img  alt="${alt_description}" data-lazy="${urls.thumb}" style="background-color:${color}; font-size:12px;" class="lazy-loading" data-toggle="modal" data-target="#exampleModalCenter" onclick="myFunction(this);">
+        <div id="${id}" class="display">
+          <img  alt="${alt_description}" data-lazy="${urls.thumb}" style="background-color:${color}; font-size:12px;" class="lazy-loading" onclick="myFunction(this);">
         </div>
       `;
       // Sets an observer for each image
@@ -67,7 +67,7 @@ function lazyLoad(target) {
 
 // view image
 function myFunction(imgs) {
-  let image_text = document.querySelector('.modal-title')
+  let image_text = document.querySelector('.imgtext')
   image_text.innerHTML = imgs.alt;
   let expandImg = document.getElementById('expandedImg');
   expandImg.src = imgs.src;
