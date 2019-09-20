@@ -1,4 +1,3 @@
-let start = 0;
 
 // nav
 window.addEventListener("scroll", function () {
@@ -24,23 +23,26 @@ window.addEventListener("scroll", function () {
   }
 });
 
+let page = 1;
+// console.log(page);
 // calling the api
 function loadImage(){
-  fetch('https://api.unsplash.com/photos/?page=1&per_page=500&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f')
-  .then(response => {
-    return response.json();
-  })
+  fetch(`https://api.unsplash.com/photos/?page=${page}&per_page=200&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
+  .then(response => response.json())
   .then(arrayOfObjects => {
     arrayOfObjects.forEach(obj => {
-      let {urls, id, alt_description, color} = obj;
+      let { urls, id, alt_description, color } = obj;
       document.getElementById('display').innerHTML += `
         <div id="${id}" class="display">
-          <img  alt="${alt_description}" data-lazy="${urls.thumb}" style="background-color:${color}; font-size:12px;" class="lazy-loading" onclick="myFunction(this);">
+          <img  alt="${alt_description}" data-lazy="${urls.thumb}"
+           data-toggle="modal" data-target=".bd-example-modal-xl" 
+           style="background-color:${color}; font-size:12px;" 
+           class="lazy-loading" onclick="myFunction(this);">
         </div>
       `;
       // Sets an observer for each image
       lazyTargets = document.querySelectorAll('.lazy-loading');
-      lazyTargets.forEach(lazyLoad);
+      lazyTargets.forEach(lazyTarget => lazyLoad(lazyTarget));
     });
     console.log(arrayOfObjects);
   })
@@ -48,7 +50,7 @@ function loadImage(){
     console.log(err)
   });
 };
-loadImage();
+// loadImage();
 // lazyLoad
 function lazyLoad(target) {
   const obs = new IntersectionObserver((entries, observer) => {
@@ -73,13 +75,14 @@ function myFunction(imgs) {
   expandImg.src = imgs.src;
   expandImg.parentElement.style.display = "block";
 }
-
-//infinit scroller
-window.addEventListener("scroll", function () {
-  if ($("#display")[0].scrollHeight - $("#display")[0].scrollTop === $("#display")[0].clientHeight){
-     
-    }else{
-      console.log('rrrrrrrr')
+ 
+ window.addEventListener("scroll", function () {
+  if (Number(document.documentElement.scrollTop) + Number(document.documentElement.clientHeight) - Number(document.body.clientHeight) >= 0) {
+      page += 1;
+      loadImage();
+      
+      document.querySelector('.loader').style.display = 'none'
+    }else {
     }
 });
-// loadImage()
+loadImage();
