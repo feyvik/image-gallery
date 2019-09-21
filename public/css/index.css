@@ -101,6 +101,7 @@ li{
   height:  35vh;
   opacity: 1;
   cursor: pointer;
+  object-fit: cover;
 }
 .display img:hover {
   opacity: 0.8; 
