@@ -81,8 +81,6 @@ function myFunction(imgs) {
       document.querySelector('.loader').style.display = 'block'
       loadImage();
       document.querySelector('.loader').style.display = 'none'
-    }else {
-      
     }
 });
 loadImage();
