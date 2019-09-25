@@ -34,51 +34,69 @@
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <link href="https://fonts.googleapis.com/css?family=Cuprum|IBM+Plex+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/animate.css">
-  <link rel="stylesheet" type="text/css" href="slick/slick.css">
-  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
   <!-- nav -->
-  <nav class="fixed-top nav-up row mx-0 align-items-center animated fadeInDownBig">
-    <a class="col-3 nabar-brand" href="index.html"><img src="images/vector.png" class="logo" width="80%" height="60vh" alt=""></a>
-    <div class="input-container col-9">
-      <form action="">
-        <input class="input-field " type="search" placeholder="search" name="search" class="search">
-        <button type="submit" class="button">Search</button>
-      </form>
-    </div>
-  </nav>
-  <!-- hero -->
-
-  <div class="container-fluid hero">
-    <div class="container hero-child">
-      <div class="hero-child-text animated fadeInLeft " style="animation-delay: 1.2s; font-weight: bold">
-        <div class="upper">
-          <h1 class="mt-2 mb-4">FreepiK</h1>
-        <p>
-          FreepiK allows you to search and download creative, smart and high-resolution images for your websites
-        </p>
+  <nav class="fixed-top nav-up row mx-0 align-items-center justify-content-start animated fadeInDownBig">
+    <a class="col-lg-3 col-md-3 col-sm-12 nabar-brand" href="index.html"><img src="images/vector.png" class="logo" width="80%" height="60vh" alt=""></a>
+    <div class="col-7">
+      <div class="input-container col-9">
         <form action="">
           <input class="input-field " type="search" placeholder="search" name="search" class="search">
           <button type="submit" class="button">Search</button>
         </form>
-        <p>Trending searches: flowerwall, paper, background, sad, love</p> 
-        </div>                       
-      </div>    
-    </div>        
-  </div> 
-
-  <div class="image mt-3 mb-3 container-fluid text-center"></div>
-    <div class="" id="display">
+      </div>
+    </div>
+    <div class="col-2">
+      <button class="mr-2" type="submit" class="button">Home</button>
+    </div>
+  </nav>
+  <!-- hero -->
+  <div class="container-fluid hero">
+    <div class="container hero-child row align-items-center justify-content-center">
+      <div class="col-12 upper animated fadeInLeft " style="animation-delay: 1.2s; font-weight: bold">
+        <h1>FreepiK Image Gallery</h1>
+        <p>FreepiK allows you to search and download creative, smart and high-resolution images for your websites</p>
+        <form action="">
+          <input class="input-field " type="search" placeholder="search" name="search" class="search">
+          <button type="submit" class="button">Search</button>
+        </form>
+        <p>Trending searches: flowerwall, paper, background, sad, love</p>
+      </div>
+    </div>
+  </div>
+  <!-- view image ny button -->
+  <div class="image mt-5 mb-3 container-fluid text-center">
+    <div class="row align-items-center justify-content-around">
+        <button class="click col-2">All</button> 
+        <button class="click col-2">Beautify</button> 
+        <button class="click col-2">creative</button> 
+        <button class="click col-2">Cool</button> 
+        <button class="click col-2">Awesome</button>
+    </div>
+    <div class="mt-4" id="display">
      
     </div>
+    <!-- <div class="mt-4" id="display2">
+     
+    </div>
+    <div class="mt-4" id="display3">
+     
+    </div>
+    <div class="mt-4" id="display4">
+     
+    </div>
+    <div class="mt-4" id="display5">
+     
+    </div> -->
+    
     <div class=" text-center loader mt-5">
       <img src="images/Double Ring-1s-200px.gif"  id="loader" alt="">
     </div>
   </div>
-
   <hr>
 
   <footer class="text-center">
@@ -92,24 +110,33 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title imgtext" id="exampleModalCenterTitle"></h5>
+        <h5 class="modal-title numbertext" id="exampleModalCenterTitle"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="container">
-          <div class="mySlides">
-            <img id="expandedImg" style="width:100%; height:50vh;">
+        <!-- view single image-->
+            <div class="mySlides text-center pt-5">
+              <img id="expandedImg" style="width:100%; height:50vh;">
+              <div class="text">Caption Text</div>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+            </div>
+              
           </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-success">Download</button> -->
+      <div class="modal-footer border-none">
+        <button type="button" class="btn btn-success">Download</button>
       </div>
     </div>
   </div>
-</div>
+</div> 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -1,3 +1,5 @@
+let buffer = [];
+console.log(buffer);
 
 // nav
 window.addEventListener("scroll", function () {
@@ -39,10 +41,12 @@ function loadImage(){
            class="lazy-loading" onclick="myFunction(this);">
         </div>
       `;
+      
       // Sets an observer for each image
       lazyTargets = document.querySelectorAll('.lazy-loading');
       lazyTargets.forEach(lazyTarget => lazyLoad(lazyTarget));
     });
+    displayImages(arrayOfObjects);
     console.log(arrayOfObjects);
   })
   .catch(err => {
@@ -68,19 +72,67 @@ function lazyLoad(target) {
 
 // view image
 function myFunction(imgs) {
-  let image_text = document.querySelector('.imgtext')
+  // document.querySelector('.slideshow-container').style.display = "block";
+  let image_text = document.querySelector('.numbertext')
   image_text.innerHTML = imgs.alt;
   let expandImg = document.getElementById('expandedImg');
   expandImg.src = imgs.src;
   expandImg.parentElement.style.display = "block";
+  currentSlide(1)
 }
- 
+
+// view individual image
+function displayImages(arrayOfObjects){
+  buffer.push(arrayOfObjects);
+  showImage(buffer)
+  console.log(buffer)
+}
+
+function  showImage(buffer){
+  let show = buffer;
+  show.map( objs => {
+    let {urls, } = objs;
+    document.querySelector('.mySlides').innerHTML += `
+            <img src="${urls.full}" alt="" data-lazy="" class="lazy-loading">
+          
+        `;
+  })
+}
+let short = buffer;
+console.log(short);
+
+showSlides(short);
+
+function plusSlides(n) {
+  showSlides(short += n);
+}
+
+function currentSlide(n) {
+  showSlides(short = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {short = 1}    
+  if (n < 1) {short = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[short-1].style.display = "block";  
+  dots[short-1].className += " active";
+}
+
  window.addEventListener("scroll", function () {
   if (Number(document.documentElement.scrollTop) + Number(document.documentElement.clientHeight) - Number(document.body.clientHeight) >= -200) {
+      document.querySelector('.loader').style.display = 'block';
       page += 1;
-      document.querySelector('.loader').style.display = 'block'
       loadImage();
-      document.querySelector('.loader').style.display = 'none'
+      // document.querySelector('.loader').style.display = 'none'
     }
 });
 loadImage();
