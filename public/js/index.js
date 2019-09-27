@@ -1,5 +1,3 @@
-let buffer = [];
-console.log(buffer);
 
 // nav
 window.addEventListener("scroll", function () {
@@ -32,28 +30,25 @@ function loadImage(){
   .then(response => response.json())
   .then(arrayOfObjects => {
     arrayOfObjects.forEach(obj => {
-      let { urls, id, alt_description, color } = obj;
+      // document.getElementById('display_big').style.display = "none";
+      let { urls, id, alt_description, color,} = obj;
       document.getElementById('display').innerHTML += `
         <div id="${id}" class="display">
-          <img  alt="${alt_description}" data-lazy="${urls.thumb}"
-           data-toggle="modal" data-target=".bd-example-modal-xl" 
-           style="background-color:${color}; font-size:12px;" 
-           class="lazy-loading" onclick="myFunction(this);">
+          <img  alt="${alt_description}" data-full="${urls.full}" data-lazy="${urls.small}" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
+           class="lazy-loading">
         </div>
       `;
-      
       // Sets an observer for each image
       lazyTargets = document.querySelectorAll('.lazy-loading');
       lazyTargets.forEach(lazyTarget => lazyLoad(lazyTarget));
     });
-    displayImages(arrayOfObjects);
     console.log(arrayOfObjects);
   })
   .catch(err => {
     console.log(err)
   });
 };
-// loadImage();
+
 // lazyLoad
 function lazyLoad(target) {
   const obs = new IntersectionObserver((entries, observer) => {
@@ -76,58 +71,11 @@ function myFunction(imgs) {
   let image_text = document.querySelector('.numbertext')
   image_text.innerHTML = imgs.alt;
   let expandImg = document.getElementById('expandedImg');
-  expandImg.src = imgs.src;
+  expandImg.src = imgs.dataset.full;
   expandImg.parentElement.style.display = "block";
-  currentSlide(1)
 }
 
-// view individual image
-function displayImages(arrayOfObjects){
-  buffer.push(arrayOfObjects);
-  showImage(buffer)
-  console.log(buffer)
-}
-
-function  showImage(buffer){
-  let show = buffer;
-  show.map( objs => {
-    let {urls, } = objs;
-    document.querySelector('.mySlides').innerHTML += `
-            <img src="${urls.full}" alt="" data-lazy="" class="lazy-loading">
-          
-        `;
-  })
-}
-let short = buffer;
-console.log(short);
-
-showSlides(short);
-
-function plusSlides(n) {
-  showSlides(short += n);
-}
-
-function currentSlide(n) {
-  showSlides(short = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {short = 1}    
-  if (n < 1) {short = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[short-1].style.display = "block";  
-  dots[short-1].className += " active";
-}
-
- window.addEventListener("scroll", function () {
+window.addEventListener("scroll", function () {
   if (Number(document.documentElement.scrollTop) + Number(document.documentElement.clientHeight) - Number(document.body.clientHeight) >= -200) {
       document.querySelector('.loader').style.display = 'block';
       page += 1;
@@ -135,4 +83,82 @@ function showSlides(n) {
       // document.querySelector('.loader').style.display = 'none'
     }
 });
-loadImage();
+loadImage()
+
+// const all_image = document.getElementById('all_image');
+
+// function buttonAll() {
+//   if(button){
+//     document.getElementById('all_image').style.background = "rgba(63, 81, 181)";
+//     document.getElementById('all_image').style.color = "#fff";
+//     document.getElementById('Beautify_image').style.background = "#fff";
+//     document.getElementById('Beautify_image').style.color = "rgba(63, 81, 181)";
+//     fetch(`https://api.unsplash.com/photos/?page=${page}&per_page=21&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
+//     .then(response => response.json())
+//     .then(arrayOfObjects => {
+//     arrayOfObjects.forEach(obj => {
+//       document.getElementById('display_big').style.display = "none";
+//       document.getElementById('display').style.display = "block";
+//       let { urls, id, alt_description, color,} = obj;
+//       document.getElementById('display_big').innerHTML += `
+//         <div id="${id}" class="display">
+          
+//           <img  alt="${alt_description}" data-lazy="${urls.small}"
+//            data-toggle="modal" data-target=".bd-example-modal-xl" 
+//            style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
+//            class="lazy-loading">
+//         </div>
+//       `;
+//       // Sets an observer for each image
+//       lazyTargets = document.querySelectorAll('.lazy-loading');
+//       lazyTargets.forEach(lazyTarget => lazyLoad(lazyTarget));
+//     });
+//     console.log(arrayOfObjects);
+//     })
+//     .catch(err => {
+//     console.log(err)
+//     });
+//   } else{
+
+//   }
+// }
+// all_image.addEventListener('click', buttonAll);
+
+// const button = document.getElementById('Beautify_image');
+
+// function buttonImage() {
+//   if(button){
+//     document.getElementById('Beautify_image').style.background = "rgba(63, 81, 181)";
+//     document.getElementById('Beautify_image').style.color = "#fff";
+//     document.getElementById('all_image').style.background = "#fff";
+//     document.getElementById('all_image').style.color = "rgba(63, 81, 181)";
+//     fetch('https://api.unsplash.com/photos/?page=5&per_page=21&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f')
+//     .then(response => response.json())
+//     .then(arrayOfObjects => {
+//     arrayOfObjects.forEach(obj => {
+//       document.getElementById('display').style.display = "none";
+//       document.getElementById('display_big').style.display = "block";
+//       let { urls, id, alt_description, color,} = obj;
+//       document.getElementById('display_big').innerHTML += `
+//         <div id="${id}" class="display">
+          
+//           <img  alt="${alt_description}" data-lazy="${urls.small}"
+//            data-toggle="modal" data-target=".bd-example-modal-xl" 
+//            style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
+//            class="lazy-loading">
+//         </div>
+//       `;
+//       // Sets an observer for each image
+//       lazyTargets = document.querySelectorAll('.lazy-loading');
+//       lazyTargets.forEach(lazyTarget => lazyLoad(lazyTarget));
+//     });
+//     console.log(arrayOfObjects);
+//     })
+//     .catch(err => {
+//     console.log(err)
+//     });
+//   } else{
+
+//   }
+// }
+// button.addEventListener('click', buttonImage);
