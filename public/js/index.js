@@ -31,13 +31,26 @@ function loadImage(){
   .then(arrayOfObjects => {
     arrayOfObjects.forEach(obj => {
       // document.getElementById('display_big').style.display = "none";
-      let { urls, id, alt_description, color,} = obj;
+      let { urls, id, alt_description, color, user} = obj;
       document.getElementById('display').innerHTML += `
         <div id="${id}" class="display">
-          <img  alt="${alt_description}" data-full="${urls.full}" data-lazy="${urls.small}" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
+          <p>${user.username}</p>
+          <img  alt="${alt_description}" data-image="${user.profile_image.small}" data-full="${urls.small}" data-lazy="${urls.thumb}" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
            class="lazy-loading">
+           <p>${user.name}</p>
         </div>
       `;
+      // let {small} = user.profile_image;
+      // document.querySelector('.modal-header').innerHTML += `
+      // <img src="${small}" alt="">
+      // `;
+      // console.log(small)
+      
+      // for (const user in obj ){
+      //   // if (obj.hasowhasOwnProperty(user)){
+      //     console.log(user)
+      // //   // }
+      // }
       // Sets an observer for each image
       lazyTargets = document.querySelectorAll('.lazy-loading');
       lazyTargets.forEach(lazyTarget => lazyLoad(lazyTarget));
@@ -67,7 +80,14 @@ function lazyLoad(target) {
 
 // view image
 function myFunction(imgs) {
-  // document.querySelector('.slideshow-container').style.display = "block";
+  let images = document.querySelector('.user')
+  images.src = imgs.dataset.image;
+  let x = event.target;
+  let name = document.querySelector('.name')
+  name.innerHTML += x.nextElementSibling.innerHTML;
+  let e = event.target;
+  let username  = document.querySelector('.username')
+  username.innerHTML += e.previousElementSibling.innerHTML;
   let image_text = document.querySelector('.numbertext')
   image_text.innerHTML = imgs.alt;
   let expandImg = document.getElementById('expandedImg');
