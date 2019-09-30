@@ -35,22 +35,11 @@ function loadImage(){
       document.getElementById('display').innerHTML += `
         <div id="${id}" class="display">
           <p>${user.username}</p>
-          <img  alt="${alt_description}" data-image="${user.profile_image.small}" data-full="${urls.small}" data-lazy="${urls.thumb}" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
+          <img  alt="${alt_description}" data-image="${user.profile_image.small}" data-full="${urls.full}" data-lazy="${urls.small}" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
            class="lazy-loading">
            <p>${user.name}</p>
         </div>
       `;
-      // let {small} = user.profile_image;
-      // document.querySelector('.modal-header').innerHTML += `
-      // <img src="${small}" alt="">
-      // `;
-      // console.log(small)
-      
-      // for (const user in obj ){
-      //   // if (obj.hasowhasOwnProperty(user)){
-      //     console.log(user)
-      // //   // }
-      // }
       // Sets an observer for each image
       lazyTargets = document.querySelectorAll('.lazy-loading');
       lazyTargets.forEach(lazyTarget => lazyLoad(lazyTarget));
@@ -84,15 +73,21 @@ function myFunction(imgs) {
   images.src = imgs.dataset.image;
   let x = event.target;
   let name = document.querySelector('.name')
-  name.innerHTML += x.nextElementSibling.innerHTML;
+  name.innerHTML = x.nextElementSibling.innerHTML;
   let e = event.target;
   let username  = document.querySelector('.username')
-  username.innerHTML += e.previousElementSibling.innerHTML;
+  username.innerHTML = e.previousElementSibling.innerHTML;
   let image_text = document.querySelector('.numbertext')
   image_text.innerHTML = imgs.alt;
   let expandImg = document.getElementById('expandedImg');
   expandImg.src = imgs.dataset.full;
   expandImg.parentElement.style.display = "block";
+}
+
+function getImage(e) {
+  const target = e.srcElement || e.target;
+  const src = document.querySelector("#expandedImg").getAttribute("src");
+  target.getAttribute("href", src);
 }
 
 window.addEventListener("scroll", function () {

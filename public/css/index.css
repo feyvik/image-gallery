@@ -126,11 +126,13 @@ p{
 .mySlides img{
   width: 50%;
   height: 60vh;
-  object-fit: fill;
+  object-fit: contain;
 }
-h6{
-  position: absolute;
-  top: 8%;
+.name{
+  font-size: 15px;
+}
+h5{
+  font-size: 15px;
 }
 .user{
   margin-left: 20%;
@@ -147,9 +149,6 @@ h6{
   width: 5%;
 }
 /* view each image and slide through */
-/* .modal-content{
-  background: none;
-} */
 .modal-header{
   border: none 
 }

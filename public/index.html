@@ -100,9 +100,23 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title name" id="exampleModalCenterTitle">Sponsor Name: </h5>
-          <h6 class="username" id="exampleModalCenterTitle">Sponsor Username: </h6>
-          <img class="user" src="" alt="">
+          <div class="">
+            <div class="row">
+              <div class="col-2">
+                <img class="user" src="" alt="">
+              </div>
+              <div class="col-10">
+                <div class="row">
+                  <div class="col-12">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Name: <span class="name"></span></h5>
+                  </div>
+                  <div class="col-12">
+                    <h6 id="exampleModalCenterTitle">@<span class="username"></span></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -115,7 +129,7 @@
         </div>
         <div class="modal-footer border-none">
           <p class="numbertext"></p>
-          <button type="button" class="click">Download</button>
+          <a href=".jpg" download="newname" target="_blank" onclick="getImage(event)" class="click">Download </a>
         </div>
       </div>
     </div>
