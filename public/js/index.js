@@ -84,96 +84,18 @@ function myFunction(imgs) {
   expandImg.parentElement.style.display = "block";
 }
 
-function getImage(e) {
-  const target = e.srcElement || e.target;
-  const src = document.querySelector("#expandedImg").getAttribute("src");
-  target.getAttribute("href", src);
+function getImage(a) {
+  let srcs = document.getElementById('expandedImg');
+  console.log(srcs.src)
+  a.href = srcs.src
 }
 
 window.addEventListener("scroll", function () {
+
   if (Number(document.documentElement.scrollTop) + Number(document.documentElement.clientHeight) - Number(document.body.clientHeight) >= -200) {
       document.querySelector('.loader').style.display = 'block';
       page += 1;
       loadImage();
-      // document.querySelector('.loader').style.display = 'none'
     }
 });
 loadImage()
-
-// const all_image = document.getElementById('all_image');
-
-// function buttonAll() {
-//   if(button){
-//     document.getElementById('all_image').style.background = "rgba(63, 81, 181)";
-//     document.getElementById('all_image').style.color = "#fff";
-//     document.getElementById('Beautify_image').style.background = "#fff";
-//     document.getElementById('Beautify_image').style.color = "rgba(63, 81, 181)";
-//     fetch(`https://api.unsplash.com/photos/?page=${page}&per_page=21&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
-//     .then(response => response.json())
-//     .then(arrayOfObjects => {
-//     arrayOfObjects.forEach(obj => {
-//       document.getElementById('display_big').style.display = "none";
-//       document.getElementById('display').style.display = "block";
-//       let { urls, id, alt_description, color,} = obj;
-//       document.getElementById('display_big').innerHTML += `
-//         <div id="${id}" class="display">
-          
-//           <img  alt="${alt_description}" data-lazy="${urls.small}"
-//            data-toggle="modal" data-target=".bd-example-modal-xl" 
-//            style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
-//            class="lazy-loading">
-//         </div>
-//       `;
-//       // Sets an observer for each image
-//       lazyTargets = document.querySelectorAll('.lazy-loading');
-//       lazyTargets.forEach(lazyTarget => lazyLoad(lazyTarget));
-//     });
-//     console.log(arrayOfObjects);
-//     })
-//     .catch(err => {
-//     console.log(err)
-//     });
-//   } else{
-
-//   }
-// }
-// all_image.addEventListener('click', buttonAll);
-
-// const button = document.getElementById('Beautify_image');
-
-// function buttonImage() {
-//   if(button){
-//     document.getElementById('Beautify_image').style.background = "rgba(63, 81, 181)";
-//     document.getElementById('Beautify_image').style.color = "#fff";
-//     document.getElementById('all_image').style.background = "#fff";
-//     document.getElementById('all_image').style.color = "rgba(63, 81, 181)";
-//     fetch('https://api.unsplash.com/photos/?page=5&per_page=21&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f')
-//     .then(response => response.json())
-//     .then(arrayOfObjects => {
-//     arrayOfObjects.forEach(obj => {
-//       document.getElementById('display').style.display = "none";
-//       document.getElementById('display_big').style.display = "block";
-//       let { urls, id, alt_description, color,} = obj;
-//       document.getElementById('display_big').innerHTML += `
-//         <div id="${id}" class="display">
-          
-//           <img  alt="${alt_description}" data-lazy="${urls.small}"
-//            data-toggle="modal" data-target=".bd-example-modal-xl" 
-//            style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
-//            class="lazy-loading">
-//         </div>
-//       `;
-//       // Sets an observer for each image
-//       lazyTargets = document.querySelectorAll('.lazy-loading');
-//       lazyTargets.forEach(lazyTarget => lazyLoad(lazyTarget));
-//     });
-//     console.log(arrayOfObjects);
-//     })
-//     .catch(err => {
-//     console.log(err)
-//     });
-//   } else{
-
-//   }
-// }
-// button.addEventListener('click', buttonImage);
