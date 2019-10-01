@@ -84,19 +84,23 @@ function myFunction(imgs) {
   expandImg.parentElement.style.display = "block";
 }
 
+// download image 
 function getImage(a) {
   let srcs = document.getElementById('expandedImg');
-  a.href = srcs.src;
-  a.download = "favicon.png";
-  // document.body.append(a);
-  // a.click();
-  // document.body.remove(a);
-  // // let target = e.target;
-  // let src = document.getElementById('expandedImg').getAttribute('src');
-  // // console.log(src.src)
-  // a.getAttribute('href', src);
-  // // a.href = srcs.src
-  // // $("<a>").attr("href", "http://i.stack.imgur.com/L8rHf.png").attr("download", "img.png").appendTo("body").click().remove();
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", srcs.src, true);
+  xhr.responseType = "blob";
+  xhr.onload = function () {
+    var urlCreator = window.URL || window.webkitURL;
+    var imageUrl = urlCreator.createObjectURL(this.response);
+    var tag = document.createElement('a');
+    tag.href = imageUrl;
+    tag.download = 'fileName.png';
+    document.body.appendChild(tag);
+    tag.click();
+    document.body.removeChild(tag);
+  }
+  xhr.send();
 }
 
 window.addEventListener("scroll", function () {
