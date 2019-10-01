@@ -86,8 +86,17 @@ function myFunction(imgs) {
 
 function getImage(a) {
   let srcs = document.getElementById('expandedImg');
-  console.log(srcs.src)
-  a.href = srcs.src
+  a.href = srcs.src;
+  a.download = "favicon.png";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  // // let target = e.target;
+  // let src = document.getElementById('expandedImg').getAttribute('src');
+  // // console.log(src.src)
+  // a.getAttribute('href', src);
+  // // a.href = srcs.src
+  // // $("<a>").attr("href", "http://i.stack.imgur.com/L8rHf.png").attr("download", "img.png").appendTo("body").click().remove();
 }
 
 window.addEventListener("scroll", function () {
