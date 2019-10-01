@@ -88,9 +88,9 @@ function getImage(a) {
   let srcs = document.getElementById('expandedImg');
   a.href = srcs.src;
   a.download = "favicon.png";
-  document.body.appendChild(a);
+  document.body.append(a);
   a.click();
-  document.body.removeChild(a);
+  document.body.remove(a);
   // // let target = e.target;
   // let src = document.getElementById('expandedImg').getAttribute('src');
   // // console.log(src.src)
