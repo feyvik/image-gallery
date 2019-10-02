@@ -104,7 +104,6 @@ function getImage(a) {
 }
 
 window.addEventListener("scroll", function () {
-
   if (Number(document.documentElement.scrollTop) + Number(document.documentElement.clientHeight) - Number(document.body.clientHeight) >= -200) {
       document.querySelector('.loader').style.display = 'block';
       page += 1;
