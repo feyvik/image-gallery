@@ -30,13 +30,14 @@ function loadImage(){
   .then(response => response.json())
   .then(arrayOfObjects => {
     arrayOfObjects.forEach(obj => {
-      let { urls, id, alt_description, color } = obj;
+      // document.getElementById('display_big').style.display = "none";
+      let { urls, id, alt_description, color, user} = obj;
       document.getElementById('display').innerHTML += `
         <div id="${id}" class="display">
-          <img  alt="${alt_description}" data-lazy="${urls.thumb}"
-           data-toggle="modal" data-target=".bd-example-modal-xl" 
-           style="background-color:${color}; font-size:12px;" 
-           class="lazy-loading" onclick="myFunction(this);">
+          <p>${user.username}</p>
+          <img  alt="${alt_description}" data-image="${user.profile_image.small}" data-full="${urls.full}" data-lazy="${urls.small}" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color:${color}; font-size:12px;" onclick="myFunction(this)"
+           class="lazy-loading">
+           <p>${user.name}</p>
         </div>
       `;
       // Sets an observer for each image
@@ -49,7 +50,7 @@ function loadImage(){
     console.log(err)
   });
 };
-// loadImage();
+
 // lazyLoad
 function lazyLoad(target) {
   const obs = new IntersectionObserver((entries, observer) => {
@@ -68,21 +69,45 @@ function lazyLoad(target) {
 
 // view image
 function myFunction(imgs) {
-  let image_text = document.querySelector('.imgtext')
+  let images = document.querySelector('.user')
+  images.src = imgs.dataset.image;
+  let x = event.target;
+  let name = document.querySelector('.name')
+  name.innerHTML = x.nextElementSibling.innerHTML;
+  let e = event.target;
+  let username  = document.querySelector('.username')
+  username.innerHTML = e.previousElementSibling.innerHTML;
+  let image_text = document.querySelector('.numbertext')
   image_text.innerHTML = imgs.alt;
   let expandImg = document.getElementById('expandedImg');
-  expandImg.src = imgs.src;
+  expandImg.src = imgs.dataset.full;
   expandImg.parentElement.style.display = "block";
 }
- 
- window.addEventListener("scroll", function () {
+
+// download image 
+function getImage(a) {
+  let srcs = document.getElementById('expandedImg');
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", srcs.src, true);
+  xhr.responseType = "blob";
+  xhr.onload = function () {
+    var urlCreator = window.URL || window.webkitURL;
+    var imageUrl = urlCreator.createObjectURL(this.response);
+    var tag = document.createElement('a');
+    tag.href = imageUrl;
+    tag.download = 'fileName.png';
+    document.body.appendChild(tag);
+    tag.click();
+    document.body.removeChild(tag);
+  }
+  xhr.send();
+}
+
+window.addEventListener("scroll", function () {
   if (Number(document.documentElement.scrollTop) + Number(document.documentElement.clientHeight) - Number(document.body.clientHeight) >= -200) {
+      document.querySelector('.loader').style.display = 'block';
       page += 1;
-      document.querySelector('.loader').style.display = 'block'
       loadImage();
-      document.querySelector('.loader').style.display = 'none'
-    }else {
-      
     }
 });
-loadImage();
+loadImage()
