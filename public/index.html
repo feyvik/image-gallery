@@ -10,72 +10,130 @@
   <!-- plan meta tags -->
   <meta name="title" content="FreepiK" />
   <meta name="description" content="FreepiK is an image gallery" />
-  <meta name="url" content="http://127.0.0.1:5500/" />
-  <meta name="image" content="http://127.0.0.1:5500/../public/images/0-5616x3744.jpg" />
+  <meta name="url" content="https://freepik-99146.firebaseapp.com/" />
+  <meta name="image" content="https://freepik-99146.firebaseapp.com/images/vick.jpg" />
 
   <!-- open graph tags -->
   <meta property="og:title" content="FreepiK" />
-  <meta property="og:description" content="FreepiK allows you to search and download creative, smart and high-resolution images for your websites" />
-  <meta property="og:url" content="http://127.0.0.1:5500/public/index.html" />
+  <meta property="og:description" content="Freepik allows you to search and download creative, smart and high-resolution images for your websites" />
+  <meta property="og:url" content="https://freepik-99146.firebaseapp.com" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://127.0.0.1:5500/../public/images/0-5616x3744.jpg" />
+  <meta property="og:image" content="https://freepik-99146.firebaseapp.com/images/vick.jpg" />
+  <meta property="og:image:width" content="300" />
+  <meta property="og:image:height" content="400" />
 
   <!-- twitter card -->
   <meta name="twitter:title" content="FreepiK"/>
   <meta name="twitter:description" content="FreepiK allows you to search and download creative, smart and high-resolution images for your websites" />
-  <meta name="twitter:image" content="http://127.0.0.1:5500/../public/images/0-5616x3744.jpg" />
+  <meta name="twitter:image" content="https://freepik-99146.firebaseapp.com/images/vick.jpg" />
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:site" content="@FreepiK" />
   
-  <link rel="canonical" href="http://127.0.0.1:5500">
+  <link rel="canonical" href="https://freepik-99146.firebaseapp.com">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Cuprum|IBM+Plex+Sans|Montserrat|Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-  <div class="container-fluid landing">
-    <nav class="fixed-top nav-up">
-      <a class="navbar-brand" href="#"><img src="images/vector.png" class="logo" width="15%" alt="">FreepiK</a>
-      <div class="input-container">
-        <input class="input-field" type="search" placeholder="search" name="search">
+  <!-- nav -->
+  <nav class="fixed-top nav-up row mx-0 align-items-center justify-content-start animated fadeInDownBig">
+    <a class="col-lg-3 col-md-3 col-sm-12 nabar-brand" href="index.html"><img src="images/vector.png" class="logo" width="80%" height="60vh" alt=""></a>
+    <div class="col-7">
+      <div class="input-container col-11">
+        <form action="">
+          <input class="input-field " type="search" placeholder="search" name="search" class="search">
+          <button type="submit" class="button">Search</button>
+        </form>
       </div>
-    </nav>
-
-    <div class="container land">
-      <div class="land-text animated fadeInLeft " style="animation-delay: 1.2s; font-weight: bold">
-        <div class="upper">
-          <h1 class="mt-2 mb-4">FreepiK</h1>
-        <p>
-          FreepiK allows you to search and download creative, smart and high-resolution images for your websites
-        </p>
-          <input type="search" class="form-control" placeholder="search">  
-        </div>                       
-      </div>    
-    </div>        
-  </div>
-  <!-- images -->
-    <div class="text-center image mt-3 mb-3">
-      <div class="row" id="display">
-
-      </div>
-      <div class="loader">
-        <img src="../public/images/Double Ring-1s-200px.gif" id="loader" alt="">
-      </div>
-      <p class="more">No more image to load...</p>
     </div>
-
+  </nav>
+  <!-- hero -->
+  <div class="container-fluid hero">
+    <div class="container hero-child row align-items-center justify-content-center">
+      <div class="col-12 upper animated fadeInLeft " style="animation-delay: 1.2s; font-weight: bold">
+        <h1>FreepiK Image Gallery</h1>
+        <p>FreepiK allows you to search and download creative, smart and high-resolution images for your websites</p>
+        <form action="">
+          <input class="input-field " type="search" placeholder="search" name="search" class="search">
+          <button type="submit" class="button">Search</button>
+        </form>
+        <p>Trending searches: flowerwall, paper, background, sad, love</p>
+      </div>
+    </div>
+  </div>
+  <!-- view image ny button -->
+  <div class="image mt-5 mb-3 container-fluid text-center">
+    <div class="row align-items-center justify-content-around">
+      <button class="click col-2" id="all_image">All</button> 
+      <button class="click col-2" id="Beautify_image">Beautify</button> 
+      <button class="click col-2">creative</button> 
+      <button class="click col-2">Cool</button> 
+      <button class="click col-2">Awesome</button>
+    </div>
+    <div class="mt-4" id="display">
+     
+    </div>
+    <div class="mt-4" id="display_big">
+     
+    </div>   
+    <div class=" text-center loader mt-5">
+      <img src="images/Double Ring-1s-200px.gif"  id="loader" alt="">
+    </div>
+  </div>
   <hr>
+
   <footer class="text-center">
     <a>&copy coded by Favour Emma</a>
+    <a class="ml-2" href="https://twitter.com/@softspotEmma"><i class="fab fa-twitter p-2"></i></a>
+    <a class="ml-2" href="https://facebook.com/favour.emma.3150/"><i class="fab fa-facebook-f p-2"></i></a>
   </footer>
+ 
+  <!-- modal -->
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="">
+            <div class="row">
+              <div class="col-2">
+                <img class="user" src="" alt="">
+              </div>
+              <div class="col-10">
+                <div class="row">
+                  <div class="col-12">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Name: <span class="name"></span></h5>
+                  </div>
+                  <div class="col-12">
+                    <h6 id="exampleModalCenterTitle">@<span class="username"></span></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- view single image-->
+          <div class="mySlides text-center pt-5">
+            <img id="expandedImg">
+          </div>  
+        </div>
+        <div class="modal-footer border-none">
+          <p class="numbertext"></p>
+          <button class="click" onclick="getImage(this)" type="submit">Download</button>
+        </div>
+      </div>
+    </div>
+  </div> 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.min.js"></script>
   <script src="js/index.js"></script>
 </body>
 </html>
