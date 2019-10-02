@@ -113,11 +113,12 @@ p{
   vertical-align: middle;
   width: 96%;
   height:  45vh;
-  opacity: 1;
+  /* opacity: 1; */
   object-fit: fill;
 }
 .display img:hover {
-  background:linear-gradient(rgba(0, 0, 0, 0.699), rgba(0, 0, 0, 0.699)) url();
+  opacity: 0.7;
+  filter: alpha(opacity=50);
   cursor: pointer;
 }
 .display p{
