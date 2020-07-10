@@ -26,7 +26,7 @@ window.addEventListener("scroll", function () {
 let page = 1; 
 // calling the api
 function loadImage(){
-  fetch(`https://api.unsplash.com/photos/?page=${page}&per_page=21&client_id=fdf429cca1201279179e94e631ceaf652780d35275fec51707aaeca1a23e0f0f`)
+  fetch(`https://api.unsplash.com/photos/?page=${page}&per_page=21&client_id=your_id`)
   .then(response => response.json())
   .then(arrayOfObjects => {
     arrayOfObjects.forEach(obj => {
